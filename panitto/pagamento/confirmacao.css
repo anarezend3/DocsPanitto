@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Limitando a largura do container para melhor legibilidade */
+    margin: auto; /* Centralizando o container na tela */
+}
+
+h1 {
+    color: #FF7D2C;
+    font-size: 2em;
+    margin: 0;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.container.show h1 {
+    opacity: 1;
+    transform: scale(1);
+}
+
+button {
+    background-color: #FF7D2C;
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    outline: none;
+    text-transform: uppercase; /* Transformando texto do botão em maiúsculas */
+    font-weight: bold; /* Deixando o texto do botão em negrito */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adicionando sombra sutil */
+}
+
+button:hover {
+    background-color: #FF6C00;
+}

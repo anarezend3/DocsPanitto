@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CADASTRO</title>
+</head>
+<body>
+    <div id="login">
+        <div class="caixa">
+            <img src="img/logo.png" alt="">
+            <h1>CADASTRO</h1>
+            <form action="cadastro.php" method="POST">
+                <div class="name">
+                    <input type="text" name="nome" placeholder="Nome" required>
+                </div>
+                <div class="email">
+                    <input type="email" name="email" placeholder="E-mail" required>
+                </div>
+                <div class="senha">
+                    <input type="password" name="senha" placeholder="Senha" required>
+                </div>
+                <div class="tipo">
+                    <label for="tipo">Tipo de Usuário:</label>
+                    <select name="tipo" id="tipo" required>
+                        <option value="cliente">Cliente</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                </div>
+                <div class="entrar">
+                    <p>Já tem uma conta? <a href="login.html">Entre aqui.</a></p>
+                    <input type="submit" value="Cadastrar">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="card.css">
+    <style>
+        /* Estilos adicionais para ocultar/exibir o QR Code e a opção de pagamento em dinheiro */
+        .qr-code, .cash-option {
+            display: none;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .qr-code img {
+            width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <p>Métodos de pagamento</p>
+            <hr style="border:1px solid #ccc; margin: 0 15px;">
+            <div class="methods">
+                <div onclick="showCreditCardForm()" id="tColorA" style="color: greenyellow;">
+                    <i class="fa-solid fa-credit-card" style="color: greenyellow;"></i> Cartão crédito/débito
+                </div>
+                <div onclick="showPixCode()" id="tColorB">
+                    <i class="fa-solid fa-building-columns"></i> Pix
+                </div>
+                <div onclick="showCashOption()" id="tColorC">
+                    <i class="fa-solid fa-wallet"></i> Dinheiro
+                </div>
+            </div>
+            <hr style="border:1px solid #ccc; margin: 0 15px;">
+        </div>
+        <div class="center">
+            <div id="credit-card-form">
+                <a href="https://www.shift4shop.com/credit-card-logos.html">
+                    <img alt="Credit Card Logos" title="Credit Card Logos" src="https://www.shift4shop.com/images/credit-card-logos/cc-lg-4.png" width="250" height="auto"/>
+                </a>
+                <hr style="border:1px solid #ccc; margin: 0 15px;">
+
+                <div class="card-details">
+                    <form onsubmit="redirectToConfirmation(event)">
+                        <p>Número do cartão</p>
+                        <div class="c-number" id="c-number">
+                            <input id="number" class="cc-number" placeholder="Card number" maxlength="19" required>
+                            <i class="fa-solid fa-credit-card" style="margin: 0;"></i>
+                        </div>
+
+                        <div class="c-details">
+                            <div>
+                                <p>Data de expiração</p>
+                                <input id="e-date" class="cc-exp" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div>
+                                <p>CVV</p>
+                                <div class="cvv-box" id="cvv-box">
+                                    <input id="cvv" class="cc-cvv" placeholder="CVV" maxlength="3" required>
+                                    <i class="fa-solid fa-circle-question" title="3 digits on the back of the card" style="cursor: pointer;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="email">
+                            <p>Email</p>
+                            <input type="email" placeholder="example@email.com" id="email" required>
+                        </div>
+                        <button type="submit">PAGAR</button>
+                    </form>
+                </div>
+            </div>
+            <div id="pix-code" class="qr-code">
+                <p>Escaneie o código QR com seu aplicativo de pagamento:</p>
+                <img src="https://s2.glbimg.com/Dtw-h4E5iGM7JmspNhnfW_16aOw=/s.glbimg.com/og/rg/f/original/2013/05/16/qr_code_291_218.jpg" alt="QR Code Pix">
+            </div>
+            <div id="cash-option" class="cash-option">
+                <p>PAGAR AO RECEBER PEDIDO</p>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="details">
+                <div style="font-weight: bold; padding: 3px 0;">Descrição do pedido</div>
+                <div style="padding: 3px 0;">Valor: xxxx</div>
+            </div>
+            <hr style="border:1px solid #ccc; margin: 0 15px;">
+            <a href="https://www.shift4shop.com/credit-card-logos.html">
+                <img alt="Credit Card Logos" title="Credit Card Logos" src="https://www.shift4shop.com/images/credit-card-logos/cc-lg-4.png" width="100%" height="auto" />
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function showCreditCardForm() {
+            document.getElementById('credit-card-form').style.display = 'block';
+            document.getElementById('pix-code').style.display = 'none';
+            document.getElementById('cash-option').style.display = 'none';
+        }
+
+        function showPixCode() {
+            document.getElementById('credit-card-form').style.display = 'none';
+            document.getElementById('pix-code').style.display = 'block';
+            document.getElementById('cash-option').style.display = 'none';
+        }
+
+        function showCashOption() {
+            document.getElementById('credit-card-form').style.display = 'none';
+            document.getElementById('pix-code').style.display = 'none';
+            document.getElementById('cash-option').style.display = 'block';
+        }
+
+        
+        function redirectToConfirmation(event) {
+            event.preventDefault();  
+            window.location.href = 'confirmacao.html';  
+        }
+
+ 
+        showCreditCardForm();
+    </script>
+</body>
+</html>
+

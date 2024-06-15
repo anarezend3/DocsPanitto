@@ -1,0 +1,75 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FF7D2C;
+    color: #3a3a3a;
+}
+
+a {
+    text-decoration: none;
+    color: #FF7D2C;
+}
+
+#login {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.name input,
+.email input,
+.senha input {
+    border: none;
+    border-bottom: 2px solid #1e1c2e; /* Linha bonita e moderna */
+    width: 250px;
+    height: 40px;
+    padding-left: 15px;
+    background-color: transparent; /* Removendo o fundo colorido */
+    color: #b6b6b6;
+    margin-bottom: 15px;
+}
+
+.email input {
+    margin-bottom: 0; /* Para evitar a margem extra no campo de e-mail */
+}
+
+.senha input {
+    margin-top: 15px;
+}
+
+.entrar input {
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(31, 31, 31);
+    color: #ffffff;
+}
+
+input::placeholder {
+    color: #b6b6b6;
+}
+
+h1 {
+    color: #000000;
+    font-size: 25px;
+}
+
+.caixa {
+    background-color: #fff;
+    margin-top: 65px;
+    border-radius: 15px; /* Cantos arredondados */
+    padding: 20px; /* Espaço interno */
+    width: 400px; /* Tamanho fixo */
+    margin: 65px auto; /* Centralizar na página */
+}
+
+.caixa img {
+    width: 400px; /* Tamanho da imagem aumentado */
+}
+
+input:focus {
+    outline: none;
+}

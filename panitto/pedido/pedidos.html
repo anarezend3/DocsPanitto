@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalhes do Pedido</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<h2>Detalhes do Pedido</h2>
+
+<div id="pedido_details">
+    <label for="pedido_id">ID do Pedido:</label>
+    <input type="text" id="pedido_id">
+    <button onclick="getPedidoDetails()">Buscar Detalhes</button>
+</div>
+
+<table id="pedido_table" style="display:none;">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome do Produto</th>
+            <th>Quantidade</th>
+            <th>Preço Unitário</th>
+            <th>Total</th>
+            <th>Avaliar</th>
+        </tr>
+    </thead>
+    <tbody id="pedido_items">
+    </tbody>
+</table>
+
+<script>
+function getPedidoDetails() {
+    var pedido_id = document.getElementById("pedido_id").value;
+    $.ajax({
+        type: 'POST',
+        url: 'get_pedido_details.php',
+        data: {pedido_id: pedido_id},
+        success: function(response) {
+            var data = JSON.parse(response);
+            if (data.length > 0) {
+                $("#pedido_items").empty();
+                for (var i = 0; i < data.length; i++) {
+                    var row = "<tr>";
+                    row += "<td>" + data[i].id + "</td>";
+                    row += "<td>" + data[i].nome + "</td>";
+                    row += "<td>" + data[i].quantidade + "</td>";
+                    row += "<td>" + data[i].preco_unitario + "</td>";
+                    row += "<td>" + (data[i].quantidade * data[i].preco_unitario).toFixed(2) + "</td>";
+                    row += "<td><a href='../avaliar_produto/avaliar.html?produto_id=" + data[i].id + "'>Avaliar</a></td>"; // Ajuste aqui
+                    row += "</tr>";
+                    $("#pedido_items").append(row);
+                }
+                $("#pedido_table").show();
+            } else {
+                alert("Nenhum item encontrado para o pedido especificado.");
+                $("#pedido_table").hide();
+            }
+        }
+    });
+}
+</script>
+
+</body>
+</html>

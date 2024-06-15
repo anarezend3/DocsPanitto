@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Reviews</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="wrapper">
+    <h3>Avalie o produto</h3>
+    <form id="avaliacao_form" action="submit_avaliacao.php" method="POST">
+        <input type="hidden" name="id" id="produto_id" value="">
+        <div class="rating">
+            <input type="number" name="rating" id="rating" hidden>
+            <i class='bx bx-star star' style="--i: 0;"></i>
+            <i class='bx bx-star star' style="--i: 1;"></i>
+            <i class='bx bx-star star' style="--i: 2;"></i>
+            <i class='bx bx-star star' style="--i: 3;"></i>
+            <i class='bx bx-star star' style="--i: 4;"></i>
+        </div>
+        <textarea name="opinion" id="opinion" cols="30" rows="5" placeholder="Your opinion..."></textarea>
+        <div class="btn-group">
+            <button type="button" class="btn submit" onclick="submitForm()">Submit</button>
+            <button type="button" class="btn cancel">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<script src="./script.js" defer></script>
+
+<script>
+    // Obtém o produto_id da URL e define o valor do campo de entrada oculto
+    var urlParams = new URLSearchParams(window.location.search);
+    var produto_id = urlParams.get('produto_id');
+    document.getElementById('produto_id').value = produto_id;
+
+    // Função para validar e enviar o formulário
+    function submitForm() {
+        var rating = document.getElementById('rating').value;
+        var opinion = document.getElementById('opinion').value;
+
+        // Verifica se os campos estão preenchidos
+        if (rating && opinion) {
+            document.getElementById('avaliacao_form').submit(); // Envie o formulário se tudo estiver preenchido
+        } else {
+            alert('Por favor, preencha todos os campos.');
+        }
+    }
+</script>
+
+</body>
+</html>
